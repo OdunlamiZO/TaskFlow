@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+		<link rel="stylesheet" href="/css/login.css" th:href="@{/css/login.css}" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script src="/js/login.js" th:src="@{/js/login.js}"></script>
+		<title>TaskFlow | Login</title>
+	</head>
+	<body>
+		<div id="page">
+			<form
+				id="login_form"
+				action="/login"
+				th:action="@{/login}"
+				class="card"
+				method="post"
+			>
+				<div class="header">
+					<img src="/images/logo.png" th:src="@{/images/logo.png}" alt="Logo" />
+					Login to your TaskFlow Account
+				</div>
+				<div class="rel space_top">
+					<label for="username" class="hidden">Username</label>
+					<input
+						type="text"
+						name="username"
+						id="username"
+						placeholder="Username"
+					/>
+					<span class="loading hidden"></span>
+				</div>
+				<div class="rel space_top hidden">
+					<label for="password" class="hidden">Password</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Password"
+					/>
+					<div class="space_top" style="text-align: left; font-size: 0.9em">
+						<a href="#">Forgot password?</a>
+					</div>
+				</div>
+				<div
+					id="error"
+					class="stack_left space_top hidden"
+					style="font-size: 0.85em; color: #e42043"
+				>
+					<svg
+						style="overflow: visible; enable-background: new 0 0 32 32"
+						viewBox="0 0 32 32"
+						width="16px"
+						height="16px"
+					>
+						<g>
+							<g id="Error_1_">
+								<g id="Error">
+									<circle
+										cx="16"
+										cy="16"
+										id="BG"
+										r="16"
+										style="fill: #e42043"
+									/>
+									<path
+										d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+										id="Exclamatory_x5F_Sign"
+										style="fill: #e6e6e6"
+									/>
+								</g>
+							</g>
+						</g>
+					</svg>
+					<span id="error_message"
+						>Lorem ipsum dolor sit amet consectetur.</span
+					>
+				</div>
+				<div class="space_top" align="right">
+					<button type="button" id="next_button" class="button">Next</button>
+					<input
+						type="submit"
+						id="login_button"
+						class="button hidden"
+						value="Login"
+					/>
+				</div>
+			</form>
+			<div>
+				Don't have an account?
+				<a href="/signup" th:href="@{/signup}">Sign Up</a>
+			</div>
+		</div>
+	</body>
+</html>

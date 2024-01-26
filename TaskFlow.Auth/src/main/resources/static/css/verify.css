@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+
+#page {
+	background-color: rgb(150, 150, 150, 0.1);
+}
+
+#page div.content {
+	width: 87.5%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+#page div.content div.head {
+	font-family: "Oxygen", sans-serif;
+	font-size: 1.85em;
+	font-weight: bold;
+}
+
+#envelop {
+	width: 50%;
+	height: auto;
+}
+
+input.button {
+	outline: unset;
+	font-size: 1em;
+	font-family: "Ubuntu Condensed", sans-serif;
+	color: white;
+	background-color: var(--blue);
+}
+
+a.button {
+	color: var(--blue);
+}
+
+a.button,
+input.button {
+	width: 115px;
+	border: 1px solid rgba(1, 129, 198, 0.25);
+	border-radius: 5px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: center;
+}
+
+input.button:hover {
+	color: var(--blue);
+	background-color: unset;
+}
+
+a.button:hover {
+	color: white;
+	background-color: var(--blue);
+}

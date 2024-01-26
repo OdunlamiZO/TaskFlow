@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+
+#login_form {
+	width: 87.5%;
+	max-width: 460px;
+	padding: 24px 20px;
+}
+
+#login_form div {
+	width: 100%;
+}
+
+#login_form .header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 18px;
+	padding-bottom: 18px;
+	font-family: "Oxygen", sans-serif;
+	font-size: 1.15em;
+	font-weight: bold;
+}
+
+#login_form .header img {
+	width: 82.5px;
+	height: auto;
+}
+
+div.rel {
+	position: relative;
+}
+
+#login_form div.space_top {
+	padding-top: 7.5px;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 10px;
+	font-weight: bold;
+	border: unset;
+	color: white;
+	background-color: var(--blue);
+	outline: unset;
+}
+
+.button:hover {
+	background-color: var(--blue_hover);
+}
+
+a {
+	color: var(--blue);
+}
+
+a:hover {
+	color: var(--blue_hover);
+}
+
+@media (min-width: 768px) {
+	#login_form {
+		padding: 32px 20px;
+	}
+
+	#login_form .header {
+		gap: 20px;
+		padding-bottom: 20px;
+		font-size: 1.2em;
+	}
+
+	#login_form .header img {
+		width: 85px;
+	}
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+		<link
+			rel="stylesheet"
+			href="/css/profile.css"
+			th:href="@{/css/profile.css}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
+			integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"
+			integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script
+			src="https://kit.fontawesome.com/26a4e79a04.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="/js/profile.js" th:src="@{/js/profile.js}"></script>
+		<title>TaskFlow | Profile</title>
+	</head>
+	<body>
+		<div id="page">
+			<div class="overlay hidden"></div>
+			<div th:replace="~{header :: header}"></div>
+			<form
+				id="profile_update_form"
+				class="card"
+				action="/profile/update"
+				th:action="@{/profile/update}"
+				th:object="${user}"
+				method="post"
+			>
+				<div
+					style="display: flex; justify-content: center"
+					onclick="showPhotoUpdate()"
+				>
+					<div id="avatar" class="first">
+						<img
+							th:if="${photo != null}"
+							th:src="|data:${photo.mimeType.text};base64,${photo.data}|"
+							alt="Me"
+						/>
+						<img
+							th:unless="${photo != null}"
+							th:src="@{/images/avatar_placeholder.png}"
+							alt="Me"
+						/>
+						<div style="width: max-content">
+							<i class="fa-solid fa-camera fa-xl" style="color: #ffffff"></i>
+						</div>
+					</div>
+				</div>
+				<div class="rel space_top">
+					<label for="email">Email</label>
+					<input
+						type="email"
+						id="email"
+						th:field="*{email}"
+						th:value="*{email}"
+						placeholder="Email"
+						disabled
+					/>
+				</div>
+				<div class="rel space_top">
+					<label for="name">Name</label>
+					<input
+						type="text"
+						id="name"
+						th:field="*{name}"
+						th:value="*{name}"
+						placeholder="Name"
+					/>
+					<div class="error hidden">
+						<svg
+							style="overflow: visible; enable-background: new 0 0 32 32"
+							viewBox="0 0 32 32"
+							width="16px"
+							height="16px"
+						>
+							<g>
+								<g id="Error_1_">
+									<g id="Error">
+										<circle
+											cx="16"
+											cy="16"
+											id="BG"
+											r="16"
+											style="fill: #e42043"
+										/>
+										<path
+											d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+											id="Exclamatory_x5F_Sign"
+											style="fill: #e6e6e6"
+										/>
+									</g>
+								</g>
+							</g>
+						</svg>
+						<span></span>
+					</div>
+				</div>
+				<div class="rel space_top">
+					<label for="username">Username</label>
+					<input
+						type="text"
+						id="username"
+						th:field="*{username}"
+						th:value="*{username}"
+						placeholder="Username"
+					/>
+					<div class="error hidden">
+						<svg
+							style="overflow: visible; enable-background: new 0 0 32 32"
+							viewBox="0 0 32 32"
+							width="16px"
+							height="16px"
+						>
+							<g>
+								<g id="Error_1_">
+									<g id="Error">
+										<circle
+											cx="16"
+											cy="16"
+											id="BG"
+											r="16"
+											style="fill: #e42043"
+										/>
+										<path
+											d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+											id="Exclamatory_x5F_Sign"
+											style="fill: #e6e6e6"
+										/>
+									</g>
+								</g>
+							</g>
+						</svg>
+						<span></span>
+					</div>
+				</div>
+				<div class="space_top" align="right">
+					<input
+						type="submit"
+						id="update_profile"
+						class="button"
+						value="Update Profile"
+					/>
+					<span class="loading hidden"></span>
+				</div>
+			</form>
+			<div class="footer">
+				<img th:src="@{/images/logo.png}" alt="Logo" />
+				&copy; 2023 OdunlamiZO
+			</div>
+			<div class="modal hidden">
+				<div class="close_btn" onclick="hidePhotoUpdate()">
+					<span class="line"></span>
+					<span class="line"></span>
+				</div>
+				<div class="header" style="padding-bottom: 9.5px; font-size: 18.5px">
+					Profile Photo
+				</div>
+				<div
+					style="
+						width: 100%;
+						display: flex;
+						justify-content: center;
+						padding-top: 25px;
+						padding-bottom: 10px;
+					"
+				>
+					<div id="_avatar">
+						<div id="avatar" class="second">
+							<img
+								th:if="${photo != null}"
+								th:src="|data:${photo.mimeType.text};base64,${photo.data}|"
+								alt="Me"
+							/>
+							<img
+								th:unless="${photo != null}"
+								th:src="@{/images/avatar_placeholder.png}"
+								alt="Me"
+							/>
+						</div>
+					</div>
+					<div id="_croppie" class="hidden">
+						<input type="file" class="hidden" />
+						<div id="croppie"></div>
+					</div>
+				</div>
+				<div align="right">
+					<button id="edit_photo" class="button">Edit Photo</button>
+					<button id="save_photo" class="button hidden">Save Photo</button>
+					<button id="upload_photo" class="button hidden">Upload</button>
+					<button
+						id="delete_photo"
+						class="button hidden"
+						style="padding: 10px 12.5px"
+					>
+						Delete
+					</button>
+					<span class="loading hidden"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

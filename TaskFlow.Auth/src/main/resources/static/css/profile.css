@@ -1,0 +1,284 @@
+.error {
+	padding-top: 4px;
+	display: flex;
+	align-items: center;
+	gap: 7.5px;
+	font-size: small;
+	color: #e42043;
+}
+
+span.loading {
+	position: static;
+	display: inline-block;
+}
+
+a.circle {
+	border-radius: 50%;
+	padding: 10px;
+}
+
+a.circle:hover {
+	background-color: lightgray;
+}
+
+#page {
+	position: relative;
+	min-height: 640px;
+	padding: 12px 5%;
+	justify-content: space-between;
+}
+
+#page > .header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#logo {
+	width: 107.5px;
+	height: auto;
+}
+
+#nav_btn {
+	z-index: 4;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	border-radius: 50%;
+}
+
+#nav_btn:hover {
+	background-color: lightgray;
+}
+
+#nav_btn .line {
+	width: 45%;
+	height: 2px;
+	background-color: gray;
+}
+
+#nav {
+	z-index: 3;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	background-color: gray;
+	opacity: 0.7;
+}
+
+#nav .nav_item {
+	font-size: 19px;
+	color: white;
+}
+
+#nav .nav_item:hover {
+	color: lightgray;
+}
+
+#profile_update_form {
+	width: 87.5%;
+	max-width: 460px;
+	padding: 24px 20px;
+}
+
+#profile_update_form div {
+	width: 100%;
+}
+
+div.rel {
+	position: relative;
+}
+
+#profile_update_form div.space_top {
+	padding-top: 8.5px;
+}
+
+#avatar {
+	position: relative;
+	border-radius: 50%;
+	border: 1px solid rgb(1, 128, 198, 0.35);
+	overflow: hidden;
+}
+
+#avatar.first {
+	width: 145px;
+	height: 145px;
+}
+
+#avatar.second {
+	width: 180px;
+	height: 180px;
+}
+
+#avatar.first:hover {
+	background-color: lightgray;
+	opacity: 0.85;
+}
+
+#avatar img {
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+
+#avatar.first img {
+	z-index: -1;
+}
+
+#avatar div {
+	z-index: 1;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: none;
+	transform: translate(-50%, -50%);
+}
+
+#avatar:hover div {
+	display: block;
+}
+
+.close_btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	padding: 4px;
+}
+
+.close_btn:hover {
+	background-color: lightgray;
+}
+
+.close_btn .line {
+	width: 16px;
+	height: 2px;
+	background-color: gray;
+}
+
+.close_btn .line:nth-of-type(1) {
+	transform: translateY(5.25px) rotateZ(45deg);
+}
+
+.close_btn .line:nth-of-type(2) {
+	transform: translateY(-5.25px) rotateZ(-45deg);
+}
+
+.modal {
+	z-index: 10;
+	position: absolute;
+	top: 18.5%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 92.5%;
+	max-width: 560px;
+	border-radius: 8px;
+	padding: 17.5px 3%;
+	color: gray;
+	background-color: #ffffffbf;
+}
+
+.modal .close_btn {
+	position: absolute;
+	top: 12.5px;
+	right: 2%;
+}
+
+.modal .header {
+	border-bottom: 1px solid darkgray;
+	padding-bottom: 5px;
+	font-size: 17px;
+	font-weight: bolder;
+}
+
+.overlay {
+	z-index: 9;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: #00000080;
+	backdrop-filter: blur(1.5px);
+}
+
+.button {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 10px;
+	font-weight: bold;
+	border: unset;
+	color: white;
+	background-color: var(--blue);
+	outline: unset;
+}
+
+.button:hover {
+	background-color: var(--blue_hover);
+}
+
+#delete_photo {
+	background-color: #ff0000bf;
+}
+
+#delete_photo:hover {
+	background-color: #ff0000;
+}
+
+@media (min-width: 768px) {
+	#page {
+		padding-left: 2.5%;
+		padding-right: 2.5%;
+	}
+
+	#logo {
+		width: 120px;
+	}
+
+	#nav_btn {
+		display: none;
+	}
+
+	#nav {
+		position: static;
+		flex: 1;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		padding-left: 15%;
+		gap: 20px;
+		background-color: unset;
+	}
+
+	#nav .nav_item {
+		color: gray;
+	}
+
+	#nav .nav_item:hover {
+		color: black;
+	}
+
+	#profile_update_form {
+		padding: 32px 20px;
+	}
+}

@@ -1,0 +1,100 @@
+<div class="header" th:fragment="header">
+	<div id="nav_btn">
+		<span class="line"></span>
+		<span class="line"></span>
+		<span class="line"></span>
+	</div>
+	<a href="#">
+		<img id="logo" th:src="@{/images/logo-text.png}" alt="Logo" />
+	</a>
+	<div id="nav" role="navigation">
+		<a th:href="${webUrl} + '/tasks'" class="nav_item">Tasks</a>
+		<a th:href="${webUrl} + '/projects'" class="nav_item">Projects</a>
+		<a th:href="${webUrl} + '/analytics'" class="nav_item">Analytics</a>
+	</div>
+	<div role="navigation" style="display: flex; gap: 10px">
+		<a
+			th:href="@{/profile}"
+			th:if="${request.getRequestURI != '/profile'}"
+			class="circle"
+		>
+			<i class="fa-regular fa-user fa-xl" style="color: #808080"></i>
+		</a>
+		<a
+			th:href="@{/settings}"
+			th:if="${request.getRequestURI != '/settings'}"
+			class="circle"
+		>
+			<i class="fa-solid fa-gear fa-xl" style="color: #808080"></i>
+		</a>
+		<a th:href="@{/logout}" id="logout" class="circle">
+			<i class="fa-solid fa-power-off fa-xl" style="color: #808080"></i>
+		</a>
+	</div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		const webUrl = /*[[${webUrl}]]*/ "http://127.0.0.1:8080";
+		const principal = /*[[${user.username}]]*/ "JKay_99";
+
+		/*]]>*/
+
+		$(function () {
+			$("#logout").on("click", function (event) {
+				event.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: `${webUrl}/token/revoke`,
+					data: {
+						user: principal,
+					},
+					error: function (xhr, status, error) {
+						console.error(
+							`
+								status: ${status} \n
+								error: ${error}
+							`
+						);
+					},
+					complete: function (xhr) {
+						if (xhr.status === 200) {
+							$.ajax({
+								type: "POST",
+								url: "/logout",
+								xhrFields: {
+									withCredentials: true,
+								},
+								beforeSend: function (xhr) {
+									$.ajax({
+										type: "GET",
+										url: "/csrf",
+										async: false,
+										xhrFields: {
+											withCredentials: true,
+										},
+										success: function (response) {
+											xhr.setRequestHeader(response.headerName, response.token);
+										},
+									});
+								},
+								error: function (xhr, status, error) {
+									console.error(
+										`
+											status: ${status} \n
+											error: ${error}
+										`
+									);
+								},
+								complete: function (xhr) {
+									if (xhr.status === 200) {
+										window.location.href = `${webUrl}/login`;
+									}
+								},
+							});
+						}
+					},
+				});
+			});
+		});
+	</script>
+</div>

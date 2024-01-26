@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+		<link
+			rel="stylesheet"
+			href="/css/verify.css"
+			th:href="@{/css/verify.css}"
+		/>
+		<title>TaskFlow | Email Verification</title>
+	</head>
+	<body>
+		<div th:if="${param.completed == null}" id="page">
+			<div class="content">
+				<div class="head">Verify Your Email Account</div>
+				<div
+					style="
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						gap: 35px;
+						text-align: center;
+						font-size: 1.05em;
+					"
+				>
+					Click the link in the email sent to your inbox to verify your email
+					account
+					<img
+						id="envelop"
+						src="/images/envelop.png"
+						th:src="@{/images/envelop.png}"
+						alt="Envelop"
+					/>
+				</div>
+				<div
+					style="
+						width: 100%;
+						height: 75px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						gap: 12.5%;
+					"
+				>
+					<form
+						action="/mail/verification"
+						th:action="@{/mail/verification}"
+						method="post"
+					>
+						<input type="hidden" name="email" th:value="${email}" />
+						<input class="button" type="submit" value="Resend" />
+					</form>
+					<a href="#" class="button" style="cursor: default;">Contact Support</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

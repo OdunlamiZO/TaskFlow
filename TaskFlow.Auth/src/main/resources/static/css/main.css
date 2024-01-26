@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
+
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+:root {
+	--blue: rgb(1, 128, 198, 0.65);
+	--blue_hover: rgb(1, 128, 198, 0.85);
+	--status_color: var(--blue);
+}
+
+.hidden {
+	display: none !important;
+}
+
+.card {
+	border: 1px solid rgba(150, 150, 150, 0.1);
+	border-radius: 8px;
+	box-shadow: 2.5px 2.5px 2.5px rgb(150, 150, 150, 0.1);
+}
+
+.stack_left {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+}
+
+span.loading {
+	z-index: 1;
+	position: absolute;
+	top: calc(50% - 10px);
+	right: 8px;
+	width: 27.5px;
+	height: 27.5px;
+	border: 2.5px solid #ddd;
+	border-top: 2.5px solid var(--blue);
+	border-radius: 50%;
+	animation: loading-anime 0.8s infinite linear;
+}
+
+@keyframes loading-anime {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+input:not([type="submit"]):not([type="checkbox"]) {
+	width: 100%;
+	height: 40px;
+	padding-left: 8px;
+	padding-right: 8px;
+	border: 1px solid var(--status_color);
+	border-radius: 5px;
+	outline: unset;
+}
+
+input:not([type="submit"]):focus {
+	border-width: 1.5px;
+}
+
+input:not([type="submit"]):disabled {
+	background-color: white;
+}
+
+input[type="checkbox"]:checked {
+	accent-color: var(--blue);
+}
+
+input:-webkit-autofill {
+	box-shadow: 0 0 0 20px white inset;
+}
+
+label {
+	z-index: 1;
+	position: absolute;
+	top: 0px;
+	left: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 0.85em;
+	color: var(--status_color);
+	background-color: white;
+}
+
+#page {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	font-family: "Ubuntu Condensed", sans-serif;
+}
+
+#page > .footer {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	padding-bottom: 10px;
+	font-size: 14.5px;
+}
+
+#page > .footer img {
+	width: 60px;
+	height: auto;
+}
+
+@media (min-width: 768px) {
+	#page > .footer {
+		gap: 20px;
+		font-size: 15px;
+	}
+
+	#page > .footer img {
+		width: 65px;
+	}
+}

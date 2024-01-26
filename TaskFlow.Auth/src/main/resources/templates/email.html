@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body style="width: 100%; font-family: 'Ubuntu Condensed', sans-serif">
+		<table style="width: 100%">
+			<tbody>
+				<tr>
+					<td
+						align="center"
+						style="
+							background-color: #0000000d;
+							padding-top: 15px;
+							padding-bottom: 15px;
+						"
+					>
+						<a href="#">
+							<img
+								th:src="|data:image/png;base64,${logo}|"
+								width="125"
+								height="auto"
+							/>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" style="padding: 50px 10px 10px 10px">
+						<table
+							style="
+								width: 100%;
+								max-width: 620px;
+								border: 2.5px solid #0000000d;
+								border-radius: 5px;
+								padding: 35px 20px;
+								color: #000000bf;
+							"
+						>
+							<tbody>
+								<tr>
+									<td>
+										<div
+											style="margin-bottom: 15px"
+											th:text="'Hi ' + ${name} + ','"
+										>
+											Hi John,
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div style="text-align: justify; line-height: 22.5px">
+											You have just sign up for a TaskFlow account using this
+											email address, please click the link below to verify your
+											email.
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td align="center">
+										<form
+											style="padding-top: 25px"
+											th:action="${url} + '/verify'"
+											method="post"
+										>
+											<input
+												type="hidden"
+												name="token"
+												value="Y6UxDnO0lHN4TtH9"
+												th:value="${token}"
+											/>
+											<input
+												type="submit"
+												value="Verify"
+												style="
+													outline: unset;
+													border: unset;
+													border-radius: 2.5px;
+													padding: 7.5px 20px;
+													color: white;
+													background-color: #0181c699;
+													font-size: 15px;
+													cursor: pointer;
+												"
+											/>
+										</form>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div style="text-align: center; font-size: 0.8em; color: #000000bf">
+							This email was sent by
+							<a href="#" style="text-decoration: none; color: #0181c699"
+								>TaskFlow</a
+							>.<br />
+							If you haven't registered at TaskFlow, just ignore this email.
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

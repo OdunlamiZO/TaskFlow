@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+		<link
+			rel="stylesheet"
+			href="/css/signup.css"
+			th:href="@{/css/signup.css}"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script src="/js/signup.js" th:src="@{/js/signup.js}"></script>
+		<title>TaskFlow | Sign Up</title>
+	</head>
+	<body>
+		<div id="page">
+			<form
+				id="signup_form"
+				class="card"
+				action="/signup"
+				th:action="@{/signup}"
+				method="post"
+			>
+				<div class="header">
+					<img src="/images/logo.png" th:src="@{/images/logo.png}" alt="Logo" />
+					Create your TaskFlow Account
+				</div>
+				<div class="rel space_top">
+					<label for="email" class="hidden">Email</label>
+					<input type="email" id="email" placeholder="Email" />
+					<span class="loading hidden"></span>
+				</div>
+				<div class="rel space_top hidden">
+					<label for="name" class="hidden">Name</label>
+					<input type="text" id="name" placeholder="Name" />
+				</div>
+				<div class="rel space_top hidden">
+					<label for="username" class="hidden">Username</label>
+					<input type="text" id="username" placeholder="Username" />
+					<span class="loading hidden"></span>
+				</div>
+				<div class="rel space_top hidden">
+					<label for="password" class="hidden">Password</label>
+					<input type="password" id="password" placeholder="Password" />
+					<div
+						class="stack_left space_top hidden"
+						style="font-size: 0.85em; text-align: justify; color: gray"
+					>
+						<svg viewBox="0 0 24 24" width="24px" height="24px">
+							<g id="layer1" transform="translate(-119.2722,-117.01157)">
+								<path
+									id="path184"
+									style="
+										fill: #0180c6;
+										stroke: #0180c6;
+										stroke-width: 8.77983e-9;
+										stroke-linejoin: round;
+									"
+									d="m 143.50102,128.62639 a 12.114412,11.614821 0 0 1 -12.11441,11.61482 12.114412,11.614821 0 0 1 -12.11441,-11.61482 12.114412,11.614821 0 0 1 12.11441,-11.61482 12.114412,11.614821 0 0 1 12.11441,11.61482 z"
+								/>
+								<g
+									aria-label="i"
+									id="text1109"
+									style="
+										font-size: 17.6389px;
+										font-family: Ubuntu;
+										-inkscape-font-specification: Ubuntu;
+										text-align: center;
+										text-anchor: middle;
+										fill: #ffffff;
+										stroke: #0180c6;
+										stroke-width: 0;
+										stroke-linejoin: round;
+									"
+								>
+									<path
+										d="m 132.21564,135.11751 h -1.64042 v -9.17223 h 1.64042 z m -0.82903,-10.83029 q -0.44097,0 -0.75847,-0.28222 -0.29986,-0.29986 -0.29986,-0.79375 0,-0.49389 0.29986,-0.77611 0.3175,-0.29986 0.75847,-0.29986 0.44097,0 0.74084,0.29986 0.3175,0.28222 0.3175,0.77611 0,0.49389 -0.3175,0.79375 -0.29987,0.28222 -0.74084,0.28222 z"
+										id="path3041"
+									/>
+								</g>
+							</g>
+						</svg>
+						<span
+							>Password must be at least 8 characters long and contain at least
+							one uppercase letter, one lowercase letter, and one digit.</span
+						>
+					</div>
+				</div>
+				<div class="rel space_top hidden">
+					<label for="confirm_password" class="hidden">Confirm Password</label>
+					<input
+						type="password"
+						id="confirm_password"
+						placeholder="Confirm Password"
+					/>
+				</div>
+				<div
+					id="error"
+					class="stack_left space_top hidden"
+					style="font-size: 0.85em; color: #e42043"
+				>
+					<svg
+						style="overflow: visible; enable-background: new 0 0 32 32"
+						viewBox="0 0 32 32"
+						width="16px"
+						height="16px"
+					>
+						<g>
+							<g id="Error_1_">
+								<g id="Error">
+									<circle
+										cx="16"
+										cy="16"
+										id="BG"
+										r="16"
+										style="fill: #e42043"
+									/>
+									<path
+										d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+										id="Exclamatory_x5F_Sign"
+										style="fill: #e6e6e6"
+									/>
+								</g>
+							</g>
+						</g>
+					</svg>
+					<span id="error_message"
+						>Lorem ipsum dolor sit amet consectetur.</span
+					>
+				</div>
+				<div
+					class="stack_left space_top hidden"
+					style="font-size: 0.85em; text-align: justify; color: gray"
+				>
+					<input type="checkbox" id="agreement_check" />
+					<span
+						>Agree to TaskFlow <a href="#">Terms of Use</a> and
+						<a href="#">Privacy Policy</a>.</span
+					>
+				</div>
+				<div class="space_top" align="right">
+					<button type="button" id="confirm_button" class="button">
+						Confirm
+					</button>
+					<input
+						type="submit"
+						id="sign_button"
+						class="button hidden"
+						value="Sign Up"
+						disabled
+					/>
+				</div>
+			</form>
+			<div>
+				Already have an account? <a href="/login" th:href="@{/login}">Login</a>
+			</div>
+		</div>
+	</body>
+</html>

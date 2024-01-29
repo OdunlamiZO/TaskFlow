@@ -12,6 +12,7 @@ The project highlights:
 * OAuth 2 authorization
 * JWT authentication
 * RESTful API
+* Rate Limiting
 * Using Spring Data JPA and MYSQL for data access
 * Using Laravel Eloquent Model
 * Integration Test
